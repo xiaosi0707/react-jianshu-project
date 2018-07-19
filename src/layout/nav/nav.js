@@ -10,7 +10,7 @@ export default function Nav(props) {
     let userLink = null;
     // 判断myInfo是否有值
     if(myInfo && !myInfo.code) {
-        myInfo.data.avatar = config.url + `/${myInfo.data.avatar}`
+        // myInfo.data.avatar = config.url + `/${myInfo.data.avatar}`
         userLink = (
             <NavLink
                 to="/my_page"
@@ -18,7 +18,7 @@ export default function Nav(props) {
                 activeClassName="active"
             >
                 <img
-                    src={myInfo.data.avatar}
+                    src={config.url + '/' + myInfo.data.avatar}
                     className="ui image avatar"
                     alt=""
                 />

@@ -1,7 +1,7 @@
 /*Created by SmallFour on 2018/7/17*/
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import S from './frame.scss'
 import Nav from '../nav/nav.js'
 import Home from '../../view/home/home'
@@ -29,7 +29,8 @@ export default class Frame extends React.Component{
                 <Nav {...{ myInfo }}/> {/*传递给兄弟组件Nav*/}
                 <Route exact path='/' component={Home}></Route>
                 <Route exact path='/sign_in' render={
-                    (props) => (<SignIn {...{ myInfoHandle }} />)
+                    (props) => (
+                        myInfo && !myInfo.code ? <Redirect to='/' /> : <SignIn {...{ myInfoHandle }} />)
                 }
                 ></Route>
                 <Route exact path='/sign_up' component={SignUp}></Route>
