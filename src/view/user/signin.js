@@ -25,6 +25,7 @@ export default class SignIn extends React.Component{
                 myInfoHandle(res); // 子组件接收到父组件传递过来的方法，API请求完成把数据传递给父组件传递过来的方法，那么父组件中的数据会同步得到更新
             })
     }
+
     // 判断是否为登录状态
     // componentDidMount() {
     //     let { myInfoHandle } = this.props;

@@ -5,8 +5,7 @@ import N from './nav.scss'
 import config from '../../common/config'
 
 export default function Nav(props) {
-    console.log(props)
-    let { myInfo } = props; // 接收父组件传递过来的数据
+    let { myInfo, logout } = props; // 接收父组件传递过来的数据
     let userLink = null;
     // 判断myInfo是否有值
     if(myInfo && !myInfo.code) {
@@ -18,12 +17,16 @@ export default function Nav(props) {
                 activeClassName="active"
             >
                 <img
-                    src={config.url + '/' + myInfo.data.avatar}
+                    src={myInfo ? config.url + '/' + myInfo.data.avatar : ''}
                     className="ui image avatar"
                     alt=""
                 />
                 <div className={N.dropDown}>
-                    <p>注销</p>
+                    <p onClick={(ev) => {
+                        ev.preventDefault()
+                        ev.stopPropagation()
+                        logout()
+                    }}>注销</p>
                 </div>
             </NavLink>
         )
