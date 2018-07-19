@@ -41,37 +41,6 @@ export default function Nav(props) {
             >注册</NavLink>
         )]
     }
-    // if(!myInfo) {
-    //     // 注意：如果是兄弟的标签的话，可以放在数组里，就不会报错了
-    //     userLink = [(
-    //         <NavLink key='1' to="/sign_in"
-    //                  className={`item`}
-    //                  activeClassName="active"
-    //         >登录</NavLink>),(
-    //         <NavLink key='2' to="/sign_up"
-    //                  className={`item`}
-    //                  activeClassName="active"
-    //         >注册</NavLink>
-    //     )]
-    // } else {
-    //     myInfo.data.avatar = config.url + `/${myInfo.data.avatar}`
-    //     userLink = (
-    //         <NavLink
-    //             to="/my_page"
-    //             className={`${N.avatar} item`}
-    //             activeClassName="active"
-    //         >
-    //             <img
-    //                 src={myInfo.data.avatar}
-    //                 className="ui image avatar"
-    //                 alt=""
-    //             />
-    //             <div className={N.dropDown}>
-    //                 <p>注销</p>
-    //             </div>
-    //         </NavLink>
-    //     )
-    // }
     return (
         <div className={`ui fixed secondary pointing menu ${N.nav}`}>
             <div className="ui container">

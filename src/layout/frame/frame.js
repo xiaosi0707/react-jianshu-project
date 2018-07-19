@@ -7,6 +7,7 @@ import Nav from '../nav/nav.js'
 import Home from '../../view/home/home'
 import SignIn from '../../view/user/signin'
 import SignUp from '../../view/user/signup'
+import config from '../../common/config'
 export default class Frame extends React.Component{
     constructor(props) {
         super(props)
@@ -19,6 +20,16 @@ export default class Frame extends React.Component{
         this.setState({
             myInfo: resData // 把子组件传递上来的数据，更新到myInfo上，然后再传递给Nav兄弟组件
         })
+    }
+    componentDidMount() {
+        let { myInfoHandle } = this;
+        $.post(`${config.url}/autologin`)
+            .done((res) => {
+                this.setState({
+                    signIn: res
+                })
+                myInfoHandle(res);
+            })
     }
     render() {
         let { myInfoHandle } = this;

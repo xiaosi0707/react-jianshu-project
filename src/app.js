@@ -4,6 +4,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ReactDOM from 'react-dom';
 import Frame from './layout/frame/frame'
 
+$.ajaxSetup({
+    xhrFields: {
+        withCredentials: true
+    }
+})
+
 ReactDOM.render(
     <Router>
         <Route path='/' component={Frame}></Route>
