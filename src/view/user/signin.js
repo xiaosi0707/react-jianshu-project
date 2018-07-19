@@ -22,14 +22,12 @@ export default class SignIn extends React.Component{
                     signIn: res
                 })
                 // 通过参数传递数据到父组件
-                myInfoHandle(res);
+                myInfoHandle(res); // 子组件接收到父组件传递过来的方法，API请求完成把数据传递给父组件传递过来的方法，那么父组件中的数据会同步得到更新
             })
     }
     render(){
         let { signInAjax } = this;
         let { signIn } = this.state;
-        let { myInfo } = this.props;
-        // console.log(myInfo)
         return (
             <EntryPanel >
                 <SignInPanel {...{signInAjax, signIn}} />

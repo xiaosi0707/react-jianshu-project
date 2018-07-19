@@ -15,9 +15,9 @@ export default class Frame extends React.Component{
         }
         this.myInfoHandle = this.myInfoHandle.bind(this);
     }
-    myInfoHandle(resData) {
+    myInfoHandle(resData) { // 父组件定义方法 - 传递给子组件
         this.setState({
-            myInfo: resData
+            myInfo: resData // 把子组件传递上来的数据，更新到myInfo上，然后再传递给Nav兄弟组件
         })
     }
     render() {
@@ -26,7 +26,7 @@ export default class Frame extends React.Component{
 
         return (
             <div className={S.layout}>
-                <Nav {...{ myInfo }}/>
+                <Nav {...{ myInfo }}/> {/*传递给兄弟组件Nav*/}
                 <Route exact path='/' component={Home}></Route>
                 <Route exact path='/sign_in' render={
                     (props) => (<SignIn {...{ myInfoHandle }} />)
