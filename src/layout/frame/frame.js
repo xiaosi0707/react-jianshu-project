@@ -7,6 +7,7 @@ import Nav from '../nav/nav.js'
 import Home from '../../view/home/home'
 import SignIn from '../../view/user/signin'
 import SignUp from '../../view/user/signup'
+import MyPage from '../../view/user/my-page'
 import config from '../../common/config'
 export default class Frame extends React.Component{
     constructor(props) {
@@ -58,6 +59,7 @@ export default class Frame extends React.Component{
                 }
                 ></Route>
                 <Route exact path='/sign_up' component={SignUp}></Route>
+                <Route exact path='/my_page' component={MyPage}></Route>
             </div>
         )
     }
