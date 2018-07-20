@@ -62,7 +62,7 @@ export default class Frame extends React.Component{
             })
     }
     // previewName 就是用户页头像下显示的那几个字
-    initMyPage(user_id, previewName){
+    initMyPage(user_id, previewsName){
         // console.log(user_id)
         //this.getPreview(previewsData);
 

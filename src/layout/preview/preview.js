@@ -23,7 +23,7 @@ export default function Preview(props) {
                           onClick={(ev) => {
                               //ev.preventDefault();
                               //ev.stopPropagation();
-                              initMyPage(user_id)
+                              initMyPage(user_id, '所有文章')
                           }}
                     >
                         <img src={avatar} alt="" className="ui avatar image"/>
