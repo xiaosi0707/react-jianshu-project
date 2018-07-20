@@ -56,15 +56,15 @@ export default class Frame extends React.Component{
             .done((res) => {
                 if(res.code === 0) {
                     this.setState({
-                        myPagePreviews: res
+                        myPagePreviews: res.data
                     })
                 }
             })
     }
     // previewName 就是用户页头像下显示的那几个字
-    initMyPage(user_id, previewsName){
+    initMyPage(user_id, previewsData, previewsName){
         // console.log(user_id)
-        //this.getPreview(previewsData);
+        this.getPreview(previewsData);
 
         $.post(`${config.url}/getCollection`,{
             user_id
@@ -81,7 +81,7 @@ export default class Frame extends React.Component{
     }
     render() {
         let { myInfoHandle, logout, initMyPage } = this;
-        let { myInfo, notebooks, previewsName } = this.state;
+        let { myInfo, notebooks,myPagePreviews, previewsName } = this.state;
         return (
             <div className={S.layout}>
                 <Nav {...{ myInfo, logout }}/> {/*传递给兄弟组件Nav*/}
@@ -98,7 +98,7 @@ export default class Frame extends React.Component{
                 <Route exact path='/sign_up' component={SignUp}></Route>
                 <Route exact path='/my_page' render={
                     (props) => (
-                        <MyPage {...{ notebooks, previewsName }}/>
+                        <MyPage {...{ notebooks,myPagePreviews, previewsName }}/>
                     )
                 }></Route>
             </div>

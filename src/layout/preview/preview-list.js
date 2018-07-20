@@ -6,7 +6,7 @@ import config from '../../common/config'
 import S from './preview.scss'
 
 export default function PreviewList(props) {
-    let { previews, initMyPage } = props;
+    let { previews, initMyPage, myPagePreviews } = props;
     previews = previews.map((item, i) => {
         let {
            id,
