@@ -7,7 +7,7 @@ export default class MyPage extends React.Component {
         super(props)
     }
     render () {
-        let { notebooks } = this.props
+        let { notebooks, previewsName } = this.props
         return (
             <div className="ui container grid">
                 <div className="twelve wide column">
@@ -15,7 +15,7 @@ export default class MyPage extends React.Component {
                     <div className="ui secondary pointing menu">
                         <span className="active item">
                             {/*{previewsName}*/}
-                            previewsName
+                            { previewsName }
                         </span>
                     </div>
                     {/*<PreviewList*/}
