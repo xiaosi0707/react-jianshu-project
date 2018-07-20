@@ -6,7 +6,7 @@ import config from '../../common/config'
 import S from './preview.scss'
 
 export default function PreviewList(props) {
-    let { previews } = props;
+    let { previews, initMyPage } = props;
     previews = previews.map((item, i) => {
         let {
            id,
@@ -36,7 +36,8 @@ export default function PreviewList(props) {
                 user_id,
                 collection_id,
                 avatar,
-                user_name
+                user_name,
+                initMyPage
             }}/>
         )
     })

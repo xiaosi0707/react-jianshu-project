@@ -6,6 +6,26 @@ export default class Aside extends React.Component {
         super(props)
     }
     render() {
+        let { notebooks } = this.props;
+        console.log(notebooks)
+        if (notebooks.length) {
+            notebooks = notebooks.map((item, i) => {
+                let { collection_id, collection_name } = item;
+                return (
+                    <div
+                        className="item"
+                        key={i}
+                    >
+                        <i className="book icon"></i>
+                        <div className="content">
+                            {collection_name}
+                        </div>
+
+                    </div>
+                )
+            })
+        }
+
         return (
             <div className={M.aside}>
 
@@ -13,9 +33,7 @@ export default class Aside extends React.Component {
                     <div className="title">
                         个人介绍
                         <div className="ui divider hidden"></div>
-
                         <p>个人介绍的信息</p>
-
                     </div>
                 </div>
 
@@ -26,7 +44,7 @@ export default class Aside extends React.Component {
                         我的文集
                     </div>
                     <div className="ui list">
-
+                        { notebooks }
                     </div>
                 </div>
 

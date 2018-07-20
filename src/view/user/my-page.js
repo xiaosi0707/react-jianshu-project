@@ -7,6 +7,7 @@ export default class MyPage extends React.Component {
         super(props)
     }
     render () {
+        let { notebooks } = this.props
         return (
             <div className="ui container grid">
                 <div className="twelve wide column">
@@ -25,11 +26,7 @@ export default class MyPage extends React.Component {
                     previewList
                 </div>
                 <div className="four wide column">
-                    <Aside />
-                    {/*<Aside*/}
-                        {/*notebooks*/}
-                    {/*/>*/}
-                    Aside
+                    <Aside {...{notebooks}} />
                 </div>
             </div>
         );

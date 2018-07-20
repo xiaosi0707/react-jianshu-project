@@ -13,10 +13,15 @@ export default class Frame extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            myInfo: null
+            myInfo: null,
+            myPagePreviews: [],
+            notebooks: [],
+            previewsName: '所有文章'
         }
         this.myInfoHandle = this.myInfoHandle.bind(this);
         this.logout = this.logout.bind(this)
+        this.getPreview = this.getPreview.bind(this)
+        this.initMyPage = this.initMyPage.bind(this)
     }
     myInfoHandle(resData) { // 父组件定义方法 - 传递给子组件
         this.setState({
@@ -46,20 +51,56 @@ export default class Frame extends React.Component{
                 }
             })
     }
+    getPreview(data) {
+        $.post(`${config.url}/getPreview`, data)
+            .done((res) => {
+                if(res.code === 0) {
+                    this.setState({
+                        myPagePreviews: res
+                    })
+                }
+            })
+    }
+    // previewName 就是用户页头像下显示的那几个字
+    initMyPage(user_id, previewsData, previewName){
+        console.log(user_id)
+        this.getPreview(previewsData);
+
+        $.post(`${config.url}/getCollection`,{
+            user_id
+        })
+            .done((res)=>{
+                if(res.code===0){
+                    this.setState({
+                        notebooks: res.data,
+                        previewName
+                    });
+                }
+            });
+
+    }
     render() {
-        let { myInfoHandle, logout } = this;
-        let { myInfo } = this.state;
+        let { myInfoHandle, logout, initMyPage } = this;
+        let { myInfo, notebooks } = this.state;
         return (
             <div className={S.layout}>
                 <Nav {...{ myInfo, logout }}/> {/*传递给兄弟组件Nav*/}
-                <Route exact path='/' component={Home}></Route>
+                <Route exact path='/' render={
+                    (props) => (
+                        <Home {...{ initMyPage }}/>
+                        )}
+                ></Route>
                 <Route exact path='/sign_in' render={
                     (props) => (
                         myInfo && !myInfo.code ? <Redirect to='/' /> : <SignIn {...{ myInfoHandle }} />)
                 }
                 ></Route>
                 <Route exact path='/sign_up' component={SignUp}></Route>
-                <Route exact path='/my_page' component={MyPage}></Route>
+                <Route exact path='/my_page' render={
+                    (props) => (
+                        <MyPage {...{ notebooks }}/>
+                    )
+                }></Route>
             </div>
         )
     }

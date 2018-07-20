@@ -3,21 +3,28 @@ import { Link } from 'react-router-dom'
 import S from './preview.scss'
 import React from 'react'
 export default function Preview(props) {
-    //console.log(props)
+    // console.log(props)
     let {
         createdAt,
         article_title,
         preview,
         avatar,
-        user_name
+        user_id,
+        user_name,
+        initMyPage
     } = props
     return (
         <div className={`${S.note}`}>
             <div className="ui divider hidden"></div>
             <div className={`${S.content}`}>
                 <div className={`${S.author}`}>
-                    <Link to="/"
+                    <Link to="/my_page"
                           className="avatar"
+                          onClick={(ev) => {
+                              //ev.preventDefault();
+                              //ev.stopPropagation();
+                              initMyPage(user_id)
+                          }}
                     >
                         <img src={avatar} alt="" className="ui avatar image"/>
                     </Link>
