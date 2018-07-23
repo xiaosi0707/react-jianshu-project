@@ -7,7 +7,6 @@ export default class Aside extends React.Component {
     }
     render() {
         let { notebooks } = this.props;
-        console.log(notebooks)
         if (notebooks.length) {
             notebooks = notebooks.map((item, i) => {
                 let { collection_id, collection_name } = item;

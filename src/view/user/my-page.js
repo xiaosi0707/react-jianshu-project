@@ -8,7 +8,9 @@ export default class MyPage extends React.Component {
         super(props)
     }
     render () {
-        let { notebooks, myPagePreviews, previewsName } = this.props
+
+        let { notebooks, myPagePreviews, previewsName, location } = this.props
+        console.log(this)
         return (
             <div className="ui container grid">
                 <div className="twelve wide column">

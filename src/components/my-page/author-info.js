@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import M from './my-page.scss'
-export default function AuthorInfo() {
+export default function AuthorInfo(props) {
     return (
         <div className={M.author_info}>
             <Link

@@ -51,6 +51,7 @@ export default class Frame extends React.Component{
                 }
             })
     }
+    // 获取文章列表
     getPreview(data) {
         $.post(`${config.url}/getPreview`, data)
             .done((res) => {
@@ -61,11 +62,9 @@ export default class Frame extends React.Component{
                 }
             })
     }
-    // previewName 就是用户页头像下显示的那几个字
+    // user_id：用户ID（获取文集）、previewsData：用户ID给getPreview方法用以获取文章、previewName 就是用户页头像下显示的那几个字
     initMyPage(user_id, previewsData, previewsName){
-        // console.log(user_id)
         this.getPreview(previewsData);
-
         $.post(`${config.url}/getCollection`,{
             user_id
         })

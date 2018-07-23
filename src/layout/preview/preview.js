@@ -1,8 +1,8 @@
 /*Created by SmallFour on 2018/7/17*/
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import S from './preview.scss'
 import React from 'react'
-export default function Preview(props) {
+function Preview(props) {
     // console.log(props)
     let {
         createdAt,
@@ -11,18 +11,25 @@ export default function Preview(props) {
         avatar,
         user_id,
         user_name,
-        initMyPage
+        initMyPage,
+        history
     } = props
     return (
         <div className={`${S.note}`}>
             <div className="ui divider hidden"></div>
             <div className={`${S.content}`}>
                 <div className={`${S.author}`}>
-                    <Link to="/my_page"
+                    <Link to= ''
                           className="avatar"
                           onClick={(ev) => {
-                              //ev.preventDefault();
-                              //ev.stopPropagation();
+                              ev.preventDefault();
+                              ev.stopPropagation();
+                              history.push({
+                                  pathname: '/my_page',
+                                  state: {
+                                      name: '123'
+                                  }
+                              });
                               initMyPage(user_id, {user_id}, '所有文章')
                           }}
                     >
@@ -44,3 +51,5 @@ export default function Preview(props) {
         </div>
     )
 }
+
+export default withRouter(Preview);
